@@ -43,24 +43,58 @@ inputField.value = ""
 document.querySelector("form").addEventListener("submit", addMovie);
 
 
-//STEP 3
-function deleteMovie(event){
+// STEP 3
+// function deleteMovie(event){
 
-//STEP 5
-message.textContent = 'Movie deleted!'
+// //STEP 5
+// message.textContent = 'Movie deleted!'
 
-event.target.parentNode.remove();
+// event.target.parentNode.remove();
 
-}
+// }
 
 
 
 
 //STEP 4-5
-function crossOffMovie(event){
-if(event.target.classList.toggle("checked") === true){
-  message.textContent = 'Movie watched!'
-}else{
-  message.textContent = 'Movie added back'
+// function crossOffMovie(event){
+// if(event.target.classList.toggle("checked") === true){
+//   message.textContent = 'Movie watched!'
+// }else{
+//   message.textContent = 'Movie added back'
+// }
+// }
+
+
+
+//intermediate instruction
+//STEP 1
+function revealMessage(){
+  message.classList.remove('hide')
+  setTimeout(() =>{
+    message.classList.add('hide')
+  }, 2000);
+
 }
+
+
+//STEP 2
+function crossOffMovie(event) {
+  if (event.target.classList.toggle("checked") === true) {
+    event.target= `${event.target.textcontent} watched!`
+  } else {
+    event.target = `${event.target.textcontent} added back!`
+  }
+}
+
+
+
+//STEP 3
+
+function deleteMovie(event) {
+
+  message.textContent = `${event.target.parentNode.childNodes[0]} deleted`
+  event.target.parentNode.remove();
+
+  revealMessage()
 }
